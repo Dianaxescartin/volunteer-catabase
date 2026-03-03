@@ -4,6 +4,9 @@ import moment from 'moment';
 const app = express();
 const port = 8080;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 moment().format("YYYY-MM-DD");
 
 app.get('/', (req, res) => {
@@ -62,14 +65,43 @@ function getCatByName(catName) {
     return cat;
 }
 
-app.get("/cats", (request, response) => {
+function createCat(requestBody) {
+    const newCat = {
+        condoNumber: requestBody.condoNumber,
+        catName: requestBody.catName,
+        gender: requestBody.gender,
+        age: requestBody.age,
+        physicalDescription: requestBody.physicalDescription,
+        personality: requestBody.personality,
+        adoptionFee: requestBody.adoptionFee,
+        entryDate: requestBody.entryDate,
+        daysInStore: "",
+        dryFood: requestBody.dryFood,
+        flavorDryFood: requestBody.flavorDryFood,
+        wetFood: requestBody.wetFood,
+        flavorWetFood: requestBody.flavorWetFood,
+        quantityWetFood: requestBody.quantityWetFood,
+        specialNeeds: requestBody.specialNeeds
+    };
+
+        if (!newCat.condoNumber || !newCat.catName || !newCat.gender || !newCat.age || !newCat.physicalDescription 
+            || !newCat.adoptionFee || !newCat.entryDate || !newCat.dryFood || !newCat.flavorDryFood || !newCat.wetFood 
+            || !newCat.flavorWetFood || !newCat.quantityWetFood) {
+        return undefined;
+    }
+
+    catInfo.push(newCat)
+    return newCat;
+}
+
+app.get("/api/cats", (request, response) => {
     const cats = getAllCats();
     response.status(200).json({
         data: cats,
     });
 });
 
-app.get("/cats/condo/:condoNumber", (request, response) => {
+app.get("/api/cats/condo/:condoNumber", (request, response) => {
     const catsInCondo = getCatsByCondo(request.params.condoNumber);
     
     if (!catsInCondo || catsInCondo.length === 0) {
@@ -83,7 +115,7 @@ app.get("/cats/condo/:condoNumber", (request, response) => {
     });
 });
 
-app.get("/cats/name/:catName", (request, response) => {
+app.get("/api/cats/name/:catName", (request, response) => {
     const cat = getCatByName(request.params.catName);
     
     if (!cat) {
@@ -94,6 +126,26 @@ app.get("/cats/name/:catName", (request, response) => {
 
     response.status(200).json({
         data: cat,
+    });
+});
+
+app.post("/api/cats", (request, response) => {
+    if (!request.body) {
+        return response.status(400).json({
+            data: "Bad Request. Missing request body",
+        });
+    }
+
+    const newCat = createCat(request.body);
+
+    if (!newCat) {
+        return response.status(400).json({
+            data: "Bad Request. Missing required information to create a new cat",
+        });
+    }
+
+        response.status(201).json({
+        data: newCat,
     });
 });
 
