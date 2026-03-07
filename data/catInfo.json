@@ -1,0 +1,53 @@
+[
+    {
+        "condoNumber":1,
+        "catName":"Frosty",
+        "gender":"male",
+        "age":"3 years",
+        "physicalDescription":"white with gray",
+        "personality":"calm and friendly",
+        "adoptionFee":180,
+        "entryDate":"2026-02-25",
+        "daysInStore":0,
+        "dryFood":"iams",
+        "flavorDryFood":"chicken",
+        "wetFood":"iams",
+        "flavorWetFood":"salmon",
+        "quantityWetFood":"a quarter of can",
+        "specialNeeds":"add a spoon of probiotics powder to the dry food bowl"
+    },
+    {
+        "condoNumber":2,
+        "catName":"Luffy",
+        "gender":"male",
+        "age":"4 months",
+        "physicalDescription":"white",
+        "personality":"calm and friendly",
+        "adoptionFee":150,
+        "entryDate":"2026-02-20",
+        "daysInStore":0,
+        "dryFood":"intuition",
+        "flavorDryFood":"chicken",
+        "wetFood":"N/A",
+        "flavorWetFood":"N/A",
+        "quantityWetFood":"N/A",
+        "specialNeeds":"No special needs"
+    },
+    {
+        "condoNumber":2,
+        "catName":"Nami",
+        "gender":"female",
+        "age":"4 months",
+        "physicalDescription":"brown tabby",
+        "personality":"playful and outgoing",
+        "adoptionFee":150,
+        "entryDate":"2026-02-20",
+        "daysInStore":0,
+        "dryFood":"intuition",
+        "flavorDryFood":"chicken",
+        "wetFood":"N/A",
+        "flavorWetFood":"N/A",
+        "quantityWetFood":"N/A",
+        "specialNeeds":"No special needs"
+    }
+]

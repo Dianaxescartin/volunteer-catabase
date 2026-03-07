@@ -1,10 +1,17 @@
 import express from "express";
-import catFunctions from "../functions/catFunctions.js";
+import {
+    getAllCats, 
+    getCatsByCondo, 
+    getCatByName, 
+    createCat, 
+    updateCat, 
+    deleteCat
+} from "../controllers/catControllers.js";
 
 const catRouter = express.Router();
 
-catRouter.get("/", (request, response) => {
-    const cats = catFunctions.getAllCats();
+catRouter.get("/", async (request, response) => {
+    const cats = await getAllCats();
 
     if (!cats || cats.length === 0) {
         return response.status(404).json({
@@ -17,9 +24,9 @@ catRouter.get("/", (request, response) => {
     });
 });
 
-catRouter.get("/condo/:condoNumber", (request, response) => {
+catRouter.get("/condo/:condoNumber", async (request, response) => {
     const condoNumber = request.params.condoNumber;
-    const catsInCondo = catFunctions.getCatsByCondo(condoNumber);
+    const catsInCondo = await getCatsByCondo(condoNumber);
 
     if (!catsInCondo || catsInCondo.length === 0) {
         return response.status(404).json({
@@ -32,9 +39,9 @@ catRouter.get("/condo/:condoNumber", (request, response) => {
     });
 });
 
-catRouter.get("/name/:catName", (request, response) => {
+catRouter.get("/name/:catName", async (request, response) => {
     const catName = request.params.catName;
-    const cat = catFunctions.getCatByName(catName);
+    const cat = await getCatByName(catName);
     
     if (!cat) {
         return response.status(404).json({
@@ -47,14 +54,14 @@ catRouter.get("/name/:catName", (request, response) => {
     });
 });
 
-catRouter.post("/", (request, response) => {
+catRouter.post("/", async (request, response) => {
     if (!request.body) {
         return response.status(400).json({
             data: "Bad Request. Missing request body",
         });
     }
     
-    const newCat = catFunctions.createCat(request.body);
+    const newCat = await createCat(request.body);
     
     if (!newCat) {
         return response.status(400).json({
@@ -67,7 +74,7 @@ catRouter.post("/", (request, response) => {
     });
 });
 
-catRouter.put("/:catName", (request, response) => {
+catRouter.put("/:catName", async (request, response) => {
     const catName = request.params.catName;
 
     if (!request.body) {
@@ -76,7 +83,7 @@ catRouter.put("/:catName", (request, response) => {
         });
     }
 
-    const updatedCat = catFunctions.updateCat(catName, request.body);
+    const updatedCat = await updateCat(catName, request.body);
 
     if (!updatedCat) {
         return response.status(404).json({
@@ -89,9 +96,9 @@ catRouter.put("/:catName", (request, response) => {
     });
 });
 
-catRouter.delete("/:catName", (request, response) => {
+catRouter.delete("/:catName", async (request, response) => {
     const catName = request.params.catName;
-    const deletedCat = catFunctions.deleteCat(catName);
+    const deletedCat = await deleteCat(catName);
 
     if (!deletedCat) {
         return response.status(404).json({

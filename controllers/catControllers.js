@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { catInfo } from "../data/catInfo.js";
+import { jsonReadCatInfo, jsonWriteCatInfo } from '../data/jsonService.js';
 
 moment().format("YYYY-MM-DD");
 
@@ -11,35 +11,62 @@ function calculateDaysInStore(entryDate) {
     return daysInStore;
 } 
 
-const catFunctions = {
-    getAllCats: function() {
+// Cat controller functions
+export async function getAllCats() {
+    try {
+        const catInfo = await jsonReadCatInfo();
+
         catInfo.forEach((cat) => {
             cat.daysInStore = calculateDaysInStore(cat.entryDate);
         });
         catInfo.sort((a, b) => a.condoNumber - b.condoNumber);
         
         return catInfo;
-    },
-    getCatsByCondo: function(condoNumber) {
+    }
+    catch (error) {
+        console.error("Error getting all cats:", error);
+    }
+}
+
+export async function getCatsByCondo(condoNumber) {
+    try {
+        const catInfo = await jsonReadCatInfo();
         const condo = parseInt(condoNumber);
         const catsInCondo = catInfo.filter((cat) => cat.condoNumber === condo);
+        
         catsInCondo.forEach((cat) => {
             cat.daysInStore = calculateDaysInStore(cat.entryDate);
         });
 
         return catsInCondo;
-    },
-    getCatByName: function(catName) { 
+    }
+    catch (error) {
+        console.error("Error getting cats by condo:", error);
+    }
+}
+
+export async function getCatByName(catName) {
+    try {
+        const catInfo = await jsonReadCatInfo();
         const cat = catInfo.find((cat) => cat.catName.toLowerCase() === catName.toLowerCase());
 
         if (!cat) {
             return undefined;
         }
+
         cat.daysInStore = calculateDaysInStore(cat.entryDate);
 
         return cat;
-    },
-    createCat: function(requestBody) {
+    }
+    catch (error) {
+        console.error("Error getting cat by name:", error);
+    }
+}
+    
+export async function createCat(requestBody) {
+    try {
+        const catInfo = await jsonReadCatInfo();
+
         const newCat = {
             condoNumber: requestBody.condoNumber,
             catName: requestBody.catName,
@@ -66,10 +93,23 @@ const catFunctions = {
 
         catInfo.push(newCat)
         newCat.daysInStore = calculateDaysInStore(newCat.entryDate);
+        newCat.condoNumber = parseInt(newCat.condoNumber);
+        newCat.adoptionFee = parseInt(newCat.adoptionFee);
+
+        catInfo.sort((a, b) => a.condoNumber - b.condoNumber);
+
+        await jsonWriteCatInfo(catInfo);
 
         return newCat;
-    },
-    updateCat: function(catName, requestBody) {
+    }
+    catch (error) {
+        console.error("Error creating new cat:", error);
+    }
+}
+
+export async function updateCat(catName, requestBody) {
+    try {
+        const catInfo = await jsonReadCatInfo();
         const catToUpdate = catInfo.find((cat) => cat.catName.toLowerCase() === catName.toLowerCase());
 
         if (!catToUpdate) {
@@ -91,9 +131,24 @@ const catFunctions = {
         catToUpdate.quantityWetFood = requestBody.quantityWetFood || catToUpdate.quantityWetFood;
         catToUpdate.specialNeeds = requestBody.specialNeeds || catToUpdate.specialNeeds;
 
+        catToUpdate.daysInStore = calculateDaysInStore(catToUpdate.entryDate);
+        catToUpdate.condoNumber = parseInt(catToUpdate.condoNumber);
+        catToUpdate.adoptionFee = parseInt(catToUpdate.adoptionFee);
+
+        catInfo.sort((a, b) => a.condoNumber - b.condoNumber);
+
+        await jsonWriteCatInfo(catInfo);
+
         return catToUpdate;
-    },
-    deleteCat: function(catName) {
+    }
+    catch (error) {
+        console.error("Error updating cat:", error);
+    }
+}
+
+export async function deleteCat(catName) {
+    try {
+        const catInfo = await jsonReadCatInfo();
         const catToDelete = catInfo.find((cat) => cat.catName.toLowerCase() === catName.toLowerCase());
 
         if (!catToDelete) {
@@ -102,8 +157,10 @@ const catFunctions = {
 
         catInfo.splice(catInfo.indexOf(catToDelete), 1);
 
-        return catToDelete;
-    }
-};
+        await jsonWriteCatInfo(catInfo);
 
-export default catFunctions;
+        return catToDelete;
+    } catch (error) {
+        console.error("Error deleting cat:", error);
+    }
+}
