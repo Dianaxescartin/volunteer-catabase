@@ -14,7 +14,8 @@ export async function jsonReadCatInfo() {
         const catInfo = await fs.readFile(catInfoPath);
 
         return JSON.parse(catInfo);
-    } catch (error) {
+    }
+    catch (error) {
         console.error("Error reading cat info from JSON file:", error);
     }
 }
@@ -22,7 +23,8 @@ export async function jsonReadCatInfo() {
 export async function jsonWriteCatInfo(catInfo) {
     try {
         await fs.writeFile(catInfoPath, JSON.stringify(catInfo, null, 4));
-    } catch (error) {
+    }
+    catch (error) {
         console.error("Error writing cat info to JSON file:", error);
     }
 }

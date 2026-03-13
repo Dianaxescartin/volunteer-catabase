@@ -1,0 +1,186 @@
+@import "./index.css";
+
+.home-button, .add-cat-button {
+    padding: 8px;
+    width: 70px;
+}
+
+.cat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: normal;
+    min-width: 430px;
+    max-width: 530px;
+    min-height: 350px;
+    width: 100%;
+}
+
+.hidden-title {
+    display: none;
+}
+
+.cat-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr auto auto;
+    grid-template-areas: 
+        "condo-number cat-name"
+        "gender age"
+        "physical-description physical-description"
+        "personality personality";
+    gap: 4px;
+};
+
+.condo-number {
+    grid-area: condo-number;
+}
+
+.cat-name {
+    grid-area: cat-name
+}
+
+.gender {
+    grid-area: gender;
+}
+
+.age {
+    grid-area: age;
+}
+
+.physical-description {
+    grid-area: physical-description;
+}
+
+.personality {
+    grid-area: personality;
+}
+
+.rescue-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+        "adoption-fee adoption-fee"
+        "entry-date days-in-store";
+    gap: 4px;
+};
+
+.adoption-fee {
+    grid-area: adoption-fee;
+}
+
+.entry-date {
+    grid-area: entry-date;
+}
+
+.days-in-store {
+    grid-area: days-in-store;
+}
+
+.care-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: 
+        "dry-food flavor-dry-food"
+        "wet-food flavor-wet-food"
+        "quantity-wet-food quantity-wet-food"
+        "special-needs special-needs";
+    gap: 4px;
+}
+
+.dry-food {
+    grid-area: dry-food;
+}
+
+.flavor-dry-food {
+    grid-area: flavor-dry-food;
+}
+
+.wet-food {
+    grid-area: wet-food;
+}
+
+.flavor-wet-food {
+    grid-area: flavor-wet-food;
+}
+
+.quantity-wet-food {
+    grid-area: quantity-wet-food;
+}
+
+.special-needs {
+    grid-area: special-needs;
+}
+
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-button {
+    padding: 6px;
+    width: 50px;
+}
+
+@media (min-width: 768px) {
+    #cats-container {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin: 24px 0;
+    }
+
+    .cat-card {
+        display: grid;
+        grid-template-columns: 3fr 3fr 4fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: 
+            "cat-info rescue-data care-details"
+            "buttons-container buttons-container buttons-container";
+        min-width: 700px;
+        max-width: 1300px;
+        width: 100%;
+        min-height: 400px;
+    }
+    
+    .hidden-title {
+        display: block;
+        border: 2px solid rgb(255, 121, 112);
+        border-radius: 8px;
+        background-color: rgb(193, 216, 213);
+        padding: 8px;
+    }
+
+    .cat-info {
+        grid-area: cat-info;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgb(255, 121, 112);
+        border-radius: 8px;
+        padding: 8px;
+    }
+
+    .rescue-data {
+        grid-area: rescue-data;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgb(255, 121, 112);
+        border-radius: 8px;
+        padding: 8px;
+    }
+
+    .care-details {
+        grid-area: care-details;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgb(255, 121, 112);
+        border-radius: 8px;
+        padding: 8px;
+    }
+
+    .buttons-container {
+        grid-area: buttons-container;
+    }
+}

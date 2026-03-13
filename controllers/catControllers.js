@@ -6,7 +6,7 @@ moment().format("YYYY-MM-DD");
 // Using moment library to calculate days in store
 function calculateDaysInStore(entryDate) {
     const currentDate = moment();
-    const entryDateCat = moment(entryDate);
+    const entryDateCat = moment(entryDate, "MM-DD-YYYY").format("YYYY-MM-DD");
     const daysInStore = currentDate.diff(entryDateCat, 'days');
     return daysInStore;
 } 
@@ -160,7 +160,8 @@ export async function deleteCat(catName) {
         await jsonWriteCatInfo(catInfo);
 
         return catToDelete;
-    } catch (error) {
+    }
+    catch (error) {
         console.error("Error deleting cat:", error);
     }
 }

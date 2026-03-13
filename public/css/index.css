@@ -1,0 +1,107 @@
+@import "./reset.css";
+
+body {
+    background-color: rgb(252, 232, 209);
+    padding: 24px;
+    min-width: 490px;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+}
+
+#logo {
+    height: 100px;
+    width: 100px;
+}
+
+h1 {
+    text-align: center;
+    margin: 12px 0px;
+}
+
+h2 {
+    text-align: center;
+    margin: 12px 0px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 12px;
+}
+
+nav > button {
+    padding: 6px;
+}
+
+#cats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.cat-card {
+    display: grid;
+    grid-template-columns: 160px 160px;
+    grid-template-areas: 
+        "condo-number cat-name"
+        "gender age"
+        "physical-description physical-description"
+        "days-in-store days-in-store";
+    align-items: center;
+    background-color: rgb(220, 243, 240);
+    padding: 8px;
+    border: 3px solid rgb(255, 121, 112);
+    max-width: 340px;
+    min-height: 200px;
+    height: stretch;
+}
+
+.condo-number {
+    grid-area: condo-number;
+}
+
+.cat-name {
+    grid-area: cat-name;
+}
+
+.gender {
+    grid-area: gender;
+}
+
+.age {
+    grid-area: age;
+}
+
+.physical-description {
+    grid-area: physical-description;
+}
+
+.days-in-store {
+    grid-area: days-in-store;
+}
+
+p > a {
+    color: blue;
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    nav {
+        justify-content: space-between;
+        margin: 12px 30%;
+    }
+
+    #cats-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
