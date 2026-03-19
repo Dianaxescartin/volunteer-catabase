@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunteer Catabase - Cats by Condo</title>
-    <link rel="stylesheet" href="./css/condo.css">
+    <link rel="stylesheet" href="./css/catInfo.css">
 </head>
 <body>
     <header>
@@ -17,15 +17,16 @@
         </div>
     </header>
     <nav>
-        <button class="home-button"><a href="./index.html">Home</a></button>
-        <button class="add-cat-button"><a href="./pending.html">Add Cat</a></button>
+        <button id="home-button"><a href="./index.html">Home</a></button>
+        <button id="cat-info-button"><a href="./catInfo.html">Cat Information</a></button>
+        <button id="add-cat-button"><a href="./add-edit.html">Add Cat</a></button>
     </nav>
     <main id="cats-container">
         <!-- <article class="cat-card">
             <div class="cat-info">
                 <h3 class="hidden-title">Cat Information</h3>
-                <p class="condo-number"><strong>Condo: </strong><a href="/">1</a></p>
-                <p class="cat-name"><strong>Cat Name: </strong><span>Frosty</span></p>
+                <p class="condo-number"><strong>Condo: </strong><span>1</span></p>
+                <p class="cat-name"><strong>Cat Name: </strong><a href="/">Frosty</a></p>
                 <p class="gender"><strong>Gender: </strong><span>male</span></p>
                 <p class="age"><strong>Age: </strong><span>2 years</span></p>
                 <p class="physical-description"><strong>Physical Description: </strong><span>long hair, white and beige</span></p>
@@ -48,7 +49,8 @@
             </div>
             <div class="buttons-container">
                 <button class="edit-button">Edit</button>
-            </div>
+                <button class="delete-button" id="delete-catName">Delete</button>
+            </div>            
         </article> -->
     </main>
 

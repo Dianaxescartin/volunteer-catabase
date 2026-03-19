@@ -6,7 +6,7 @@ moment().format("YYYY-MM-DD");
 // Using moment library to calculate days in store
 function calculateDaysInStore(entryDate) {
     const currentDate = moment();
-    const entryDateCat = moment(entryDate, "MM-DD-YYYY").format("YYYY-MM-DD");
+    const entryDateCat = moment(entryDate).format("YYYY-MM-DD");
     const daysInStore = currentDate.diff(entryDateCat, 'days');
     return daysInStore;
 } 
@@ -22,8 +22,7 @@ export async function getAllCats() {
         catInfo.sort((a, b) => a.condoNumber - b.condoNumber);
         
         return catInfo;
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error getting all cats:", error);
     }
 }
@@ -39,8 +38,7 @@ export async function getCatsByCondo(condoNumber) {
         });
 
         return catsInCondo;
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error getting cats by condo:", error);
     }
 }
@@ -57,8 +55,7 @@ export async function getCatByName(catName) {
         cat.daysInStore = calculateDaysInStore(cat.entryDate);
 
         return cat;
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error getting cat by name:", error);
     }
 }
@@ -101,8 +98,7 @@ export async function createCat(requestBody) {
         await jsonWriteCatInfo(catInfo);
 
         return newCat;
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error creating new cat:", error);
     }
 }
@@ -140,8 +136,7 @@ export async function updateCat(catName, requestBody) {
         await jsonWriteCatInfo(catInfo);
 
         return catToUpdate;
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error updating cat:", error);
     }
 }
@@ -160,8 +155,7 @@ export async function deleteCat(catName) {
         await jsonWriteCatInfo(catInfo);
 
         return catToDelete;
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error deleting cat:", error);
     }
 }

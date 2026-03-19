@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Catabase - Add-Edit Cat Information</title>
+    <link rel="stylesheet" href="./css/add-edit.css">    
+</head>
+<body>
+    <header>
+        <div>
+            <img id="logo" src="./images/cat-you-logo.JPG" alt="Cat you logo">
+        </div>
+        <div>
+            <h1>Volunteer Catabase</h1>
+            <h2>Cat You Rescue Inc</h2>
+        </div>
+    </header>
+    <nav>
+        <button id="home-button"><a href="./index.html">Home</a></button>
+        <button id="cat-info-button"><a href="./catInfo.html">Cat Information</a></button>
+        <button id="add-cat-button"><a href="./add-edit.html">Add Cat</a></button>
+    </nav>
+    <main id="cats-container">
+        <form method="POST" action="/api/cats" class="cat-card">
+
+            <div class="cat-info">
+                <h3 class="hidden-title">Cat Information</h3>
+
+                <label for="condo-number">Condo: </label>
+                <select id="condo-number" name="condo-number" required>
+                    <option value="">Select a Condo Number</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+
+                <label for="cat-name">Cat Name: </label>
+                <input type="text" id="cat-name" name="cat-name" placeholder="Cat's name" required>
+
+                <label for="gender">Gender: </label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+
+                <label for="age">Age: </label>
+                <input type="text" id="age" name="age" placeholder="Specify age, (e.g. 2 months, 3 years)" required>
+
+                <label for="physical-description">Physical Description: </label>
+                <textarea id="physical-description" name="physical-description" placeholder="Cat's color and any other features" required></textarea>
+
+                <label for="personality">Personality: </label>
+                <textarea id="personality" name="personality" placeholder="Describe the cat's personality"></textarea>
+
+            </div>
+
+            <div class="rescue-data">
+                <h3 class="hidden-title">Rescue Data</h3>
+
+                <label for="adoption-fee">Adoption Fee: </label>
+                <input type="number" id="adoption-fee" name="adoption-fee" placeholder="Specify adoption fee" required>
+
+                <label for="entry-date">Entry Date: </label>
+                <input type="date" id="entry-date" name="entry-date" required>
+
+            </div>
+
+            <div class="care-details">
+                <h3 class="hidden-title">Care Details</h3>
+                
+                <label for="dry-food">Dry Food: </label>
+                <select id="dry-food" name="dry-food" required>
+                    <option value="">Select Dry Food</option>
+                    <option value="Intuition">Intuition</option>
+                    <option value="Iams">Iams</option>
+                    <option value="Purina One">Purina One</option>
+                    <option value="Other">Other (please specify)</option>
+                </select>
+                <input type="text" class ="hidden-input" id="other-dry-food" name="other-dry-food" placeholder="Specify other dry food">
+
+                <label for="flavor-dry-food">Flavor Dry Food: </label>
+                <select id="flavor-dry-food" name="flavor-dry-food" required>
+                    <option value="">Select Flavor</option>
+                    <option value="Chicken">Chicken</option>
+                    <option value="Tuna">Tuna</option>
+                    <option value="Salmon">Salmon</option>
+                    <option value="Other">Other (please specify)</option>
+                </select>
+                <input type="text" class ="hidden-input" id="other-flavor-dry-food" name="other-flavor-dry-food" placeholder="Specify other flavor">
+
+                <label for="wet-food">Wet Food: </label>
+                <select id="wet-food" name="wet-food" required>
+                    <option value="">Select Wet Food</option>
+                    <option value="Fancy Feast">Fancy Feast</option>
+                    <option value="Iams">Iams</option>
+                    <option value="Other">Other (please specify)</option>
+                    <option value="N/A">N/A</option>
+                </select>
+                <input type="text" class ="hidden-input" id="other-wet-food" name="other-wet-food" placeholder="Specify other wet food">
+
+                <label for="flavor-wet-food">Flavor Wet Food: </label>
+                <select id="flavor-wet-food" name="flavor-wet-food" required>
+                    <option value="">Select Flavor</option>
+                    <option value="Chicken">Chicken</option>
+                    <option value="Tuna">Tuna</option>
+                    <option value="Salmon">Salmon</option>
+                    <option value="Other">Other (please specify)</option>
+                </select>
+                <input type="text" class ="hidden-input" id="other-flavor-wet-food" name="other-flavor-wet-food" placeholder="Specify other flavor">
+
+                <label for="quantity-wet-food">Quantity Wet Food: </label>
+                <select id="quantity-wet-food" name="quantity-wet-food" required>
+                    <option value="">Select Quantity</option>
+                    <option value="A quarter of can">A quarter of can</option>
+                    <option value="A half of can">A half of can</option>
+                    <option value="A whole can">A whole can</option>
+                </select>
+
+                <label for="special-needs">Special Needs: </label>
+                <textarea id="special-needs" name="special-needs" placeholder="Describe any special needs / No special needs"></textarea>
+
+            </div>
+
+            <div class="buttons-container">
+                <button type="submit" id="submit-button">Save</button>
+            </div>
+
+        </form>
+        
+    </main>
+
+    <script type="module" src="./js/add-edit.js"></script>
+</body>
+</html>

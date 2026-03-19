@@ -1,3 +1,5 @@
+import { deleteCatInfo } from "./actions.js";
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const condoNumber = urlParams.get("condoNumber");
@@ -84,7 +86,8 @@ function createCatCard(cat) {
 
     const entryDate = document.createElement("p");
     entryDate.classList.add("entry-date");
-    entryDate.innerHTML = `<strong>Entry Date: </strong><span>${cat.entryDate}</span>`;
+    entryDate.innerHTML = `<strong>Entry Date: </strong>
+    <span>${new Date(cat.entryDate).toLocaleDateString(undefined, {year: 'numeric', month: '2-digit', day: '2-digit'})}</span>`;
 
     rescueData.appendChild(entryDate);
 
@@ -139,14 +142,31 @@ function createCatCard(cat) {
 
     careDetails.appendChild(specialNeeds);
     
-    const buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("buttons-container");
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.classList.add("buttons-container");
+
     const editButton = document.createElement("button");
     editButton.classList.add("edit-button");
     editButton.textContent = "Edit";
+    editButton.innerHTML = `<a href="../add-edit.html?catName=${cat.catName}">Edit</a>`;
 
-    buttonContainer.appendChild(editButton);
-    catCard.appendChild(buttonContainer);
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.id = 'delete-' + cat.catName.toLowerCase();
+    deleteButton.textContent = "Delete";
+    
+    deleteButton.addEventListener("click", async (e) => {
+        if(window.confirm(`Are you sure you want to delete ${cat.catName}?`)) {
+            e.preventDefault();
+            await deleteCatInfo(cat.catName);
+            alert(`${cat.catName} has been deleted.`);
+            window.location.href = "../index.html";
+        }
+    });
+    
+    buttonsContainer.appendChild(editButton);
+    buttonsContainer.appendChild(deleteButton);
+    catCard.appendChild(buttonsContainer);
 
     catsContainer.appendChild(catCard);
 }

@@ -1,3 +1,5 @@
+import { deleteCatInfo } from "./actions.js";
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const catName = urlParams.get("catName");
@@ -66,7 +68,8 @@ function createCatCard(cat) {
 
     const entryDate = document.createElement("p");
     entryDate.classList.add("entry-date");
-    entryDate.innerHTML = `<strong>Entry Date: </strong><span>${cat.entryDate}</span>`;
+    entryDate.innerHTML = `<strong>Entry Date: </strong>
+    <span>${new Date(cat.entryDate).toLocaleDateString(undefined, {year: 'numeric', month: '2-digit', day: '2-digit'})}</span>`;
 
     rescueData.appendChild(entryDate);
 
@@ -113,9 +116,24 @@ function createCatCard(cat) {
     specialNeeds.innerHTML = `<strong>Special Needs: </strong><span>${cat.specialNeeds}</span>`;
 
     careDetails.appendChild(specialNeeds);
+
+    const editButton = document.querySelector(".edit-button");
+    editButton.innerHTML = `<a href="../add-edit.html?catName=${cat.catName}">Edit</a>`;
+
+    const deleteButton = document.querySelector(".delete-button");
+    deleteButton.id = 'delete-' + cat.catName.toLowerCase();
+    
+    deleteButton.addEventListener("click", async (e) => {
+        if(window.confirm(`Are you sure you want to delete ${cat.catName}?`)) {
+            e.preventDefault();
+            await deleteCatInfo(cat.catName);
+            alert(`${cat.catName} has been deleted.`);
+            window.location.href = "../index.html";
+        }
+    });
 }
 
-async function renderCatsCards() {
+async function renderCatCard() {
     try {
         const catInfo = await getCatInfoByName();
         createCatCard(catInfo);
@@ -125,4 +143,4 @@ async function renderCatsCards() {
     }
 }
 
-await renderCatsCards();
+await renderCatCard();

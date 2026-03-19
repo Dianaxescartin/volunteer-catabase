@@ -31,12 +31,15 @@ h2 {
 
 nav {
     display: flex;
-    justify-content: space-evenly;
-    margin: 12px;
+    align-self: center;
+    justify-content: space-around;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    width: 438px;
 }
 
 nav > button {
-    padding: 6px;
+    padding: 8px;
 }
 
 #cats-container {
@@ -95,11 +98,9 @@ p > a {
 @media (min-width: 768px) {
     nav {
         justify-content: space-between;
-        margin: 12px 30%;
     }
 
     #cats-container {
-        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;

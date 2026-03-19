@@ -6,11 +6,11 @@ import catRouter from "./routes/catRouter.js";
 const app = express();
 const port = 8080;
 
-// Routes
-app.use('/api/cats', catRouter);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Routes
+app.use('/api/cats', catRouter);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

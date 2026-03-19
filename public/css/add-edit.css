@@ -1,0 +1,47 @@
+@import './catInfo.css';
+
+label {
+    font-weight: bold;
+}
+
+input, select, textarea {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: rgb(255, 121, 112);
+}
+
+.hidden-input, .hidden-select {
+    display: none;
+}
+
+.inline-input {
+    display: inline-block;
+    grid-column-end: 3;
+}
+
+::placeholder {
+    color: #999;
+    padding: 1%;
+}
+
+.cat-info {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr auto auto;
+}
+
+.rescue-data {
+    grid-template-columns: 1fr 2fr;
+}
+
+.care-details {
+    grid-template-columns: 1fr 2fr;
+}
+
+#submit-button {
+    padding: 6px;
+    width: 50px;
+}
