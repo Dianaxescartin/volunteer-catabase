@@ -27,8 +27,6 @@ async function editCatInfo() {
         const parsedData = await response.json();
         const catInfo = parsedData.data;
 
-        console.log(catInfo);
-
         const condoNumberInput = document.getElementById("condo-number");
         condoNumberInput.value = catInfo.condoNumber;
 

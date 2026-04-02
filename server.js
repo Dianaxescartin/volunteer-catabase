@@ -2,15 +2,17 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import catRouter from "./routes/catRouter.js";
+import checklistRouter from "./routes/checklistRouter.js";
 
 const app = express();
 const port = 8080;
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/cats', catRouter);
+app.use('/api/checklists', checklistRouter);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
