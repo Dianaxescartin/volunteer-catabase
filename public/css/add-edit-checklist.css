@@ -1,0 +1,11 @@
+@import './checklistInfo.css';
+
+.hidden-textarea, .hidden-label {
+    display: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

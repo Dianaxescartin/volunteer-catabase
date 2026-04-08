@@ -2,11 +2,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs/promises";
 
-// Setting up path to catInfo.json file for JSON controller functions
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const catInfoPath = path.join(__dirname, "../data/catInfo.json");
 
+// Setting up path to catInfo.json file for JSON controller functions
+const catInfoPath = path.join(__dirname, "../data/catInfo.json");
 
 // JSON cat controller functions
 export async function jsonReadCatInfo() {

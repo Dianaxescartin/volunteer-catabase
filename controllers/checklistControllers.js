@@ -40,8 +40,7 @@ export async function createChecklist(requestBody) {
                 cats: element.cats.map(cat => ({
                         catName: cat.catName,
                         physicalDescription: cat.physicalDescription,
-                        isWetFoodGiven: cat.isWetFoodGiven,
-                        areSpecialNeedsAttended: cat.areSpecialNeedsAttended
+                        specialNeeds: cat.specialNeeds
                     })),
                 areCatsHealthy: element.areCatsHealthy,
                 symptoms: element.symptoms,
@@ -50,10 +49,17 @@ export async function createChecklist(requestBody) {
                 isLitterBoxRefilled: element.isLitterBoxRefilled,
                 areBedsChanged: element.areBedsChanged,
                 isSweepingDone: element.isSweepingDone,
+                dryFood: element.dryFood,
+                flavorDryFood: element.flavorDryFood,
                 isDryFoodRefilled: element.isDryFoodRefilled,
+                wetFood: element.wetFood,
+                flavorWetFood: element.flavorWetFood,
+                quantityWetFood: element.quantityWetFood,
+                isWetFoodGiven: element.isWetFoodGiven,
                 isWaterRefilled: element.isWaterRefilled,
+                areSpecialNeedsAttended: element.areSpecialNeedsAttended,
                 isCondoLocked: element.isCondoLocked,
-                comments: element.comments
+                comments: element.comments || "No comments"
             }))
         };
 
@@ -100,8 +106,7 @@ export async function updateChecklist(date, requestBody) {
             cats: element.cats.map(cat => ({
                     catName: cat.catName,
                     physicalDescription: cat.physicalDescription,
-                    isWetFoodGiven: cat.isWetFoodGiven,
-                    areSpecialNeedsAttended: cat.areSpecialNeedsAttended
+                    specialNeeds: cat.specialNeeds,
                 })),
             areCatsHealthy: element.areCatsHealthy,
             symptoms: element.symptoms,
@@ -110,10 +115,17 @@ export async function updateChecklist(date, requestBody) {
             isLitterBoxRefilled: element.isLitterBoxRefilled,
             areBedsChanged: element.areBedsChanged,
             isSweepingDone: element.isSweepingDone,
+            dryFood: element.dryFood,
+            flavorDryFood: element.flavorDryFood,
             isDryFoodRefilled: element.isDryFoodRefilled,
+            wetFood: element.wetFood,
+            flavorWetFood: element.flavorWetFood,
+            quantityWetFood: element.quantityWetFood,
+            isWetFoodGiven: element.isWetFoodGiven,
             isWaterRefilled: element.isWaterRefilled,
+            areSpecialNeedsAttended: element.areSpecialNeedsAttended,
             isCondoLocked: element.isCondoLocked,
-            comments: element.comments
+            comments: element.comments || "No comments"
         }));
 
         checklistToUpdate.date = moment(checklistToUpdate.date).format("YYYY-MM-DD");

@@ -133,6 +133,7 @@
     #cats-container {
         flex-direction: column;
         flex-wrap: nowrap;
+        width: 100%;
     }
 
     .cat-card {

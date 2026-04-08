@@ -1,0 +1,144 @@
+@import './add-edit-cat.css';
+
+#find-checklist {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 3px solid rgb(255, 121, 112);
+    border-radius: 8px;
+    background-color: rgb(220, 243, 240);
+    max-width: 480px;
+}
+
+#find-checklist-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#find-checklist-button {
+    padding: 5px;
+    width: 145px;
+    margin-left: auto;
+}
+
+#hidden {
+    display: none;
+}
+
+#checklist-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 600px;
+}
+
+#checklist-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+details {
+    margin: 4px 0;
+}
+
+summary {
+    font-weight: bold;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(220, 243, 240);
+    padding: 8px;
+    border: 3px solid rgb(255, 121, 112);
+    gap: 16px;
+}
+
+.checklist-cat-info {
+    display: block;
+    border: 2px solid rgb(255, 121, 112);
+    border-radius: 8px;
+    background-color: rgb(193, 216, 213);
+    padding: 8px;
+    font-size: 1rem;
+}
+
+.checklist-health {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.general-care-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.specific-care-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.food-water-needs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.checklist-end {
+    display: flex;
+    flex-direction: column;
+}
+
+.checklist-end > ul {
+    margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+    #checklist-container {
+    max-width: 1000px;
+    }
+
+    fieldset {
+        display: grid;
+        grid-template-areas: 
+        "checklist-cat-info specific-care-details"
+        "checklist-health specific-care-details"
+        "general-care-details specific-care-details"
+        "general-care-details checklist-end";
+        grid-template-rows: auto auto 1fr auto;
+        column-gap: 30px;
+    }
+
+    .checklist-cat-info {
+        grid-area: checklist-cat-info;
+    }
+
+    .checklist-health {
+        grid-area: checklist-health;
+    }
+
+    .general-care-details {
+        grid-area: general-care-details;
+    }
+
+    .specific-care-details {
+        grid-area: specific-care-details;
+    }
+
+    .checklist-end {
+        grid-area: checklist-end;
+    }
+
+    .checklist-cat-info, .checklist-health, .general-care-details, .specific-care-details, .checklist-end {
+        margin: 0 16px;
+    }
+}
+

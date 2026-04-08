@@ -1,117 +1,5 @@
 [
     {
-        "date": "2026-03-30",
-        "volunteerName": "Diana",
-        "careTasks": [
-            {
-                "condoNumber": 1,
-                "cats": [
-                    {
-                        "catName": "Frosty",
-                        "physicalDescription": "Long hair, white and beige",
-                        "isWetFoodGiven": "true",
-                        "areSpecialNeedsAttended": "true"
-                    }
-                ],
-                "areCatsHealthy": "true",
-                "symptoms": "N/A",
-                "isCondoCleaned": "true",
-                "isLitterBoxCleaned": "true",
-                "isLitterBoxRefilled": "true",
-                "areBedsChanged": "true",
-                "isSweepingDone": "true",
-                "isDryFoodRefilled": "true",
-                "isWaterRefilled": "true",
-                "isCondoLocked": "true",
-                "comments": "N/A"
-            },
-            {
-                "condoNumber": 2,
-                "cats": [
-                    {
-                        "catName": "Luffy",
-                        "physicalDescription": "White",
-                        "isWetFoodGiven": "true",
-                        "areSpecialNeedsAttended": "true"
-                    },
-                    {
-                        "catName": "Nami",
-                        "physicalDescription": "Brown tabby",
-                        "isWetFoodGiven": "true",
-                        "areSpecialNeedsAttended": "true"
-                    }
-                ],
-                "areCatsHealthy": "true",
-                "symptoms": "N/A",
-                "isCondoCleaned": "true",
-                "isLitterBoxCleaned": "true",
-                "isLitterBoxRefilled": "true",
-                "areBedsChanged": "true",
-                "isSweepingDone": "true",
-                "isDryFoodRefilled": "true",
-                "isWaterRefilled": "true",
-                "isCondoLocked": "true",
-                "comments": "N/A"
-            }
-        ]
-    },
-    {
-        "date": "2026-03-31",
-        "volunteerName": "Josee",
-        "careTasks": [
-            {
-                "condoNumber": 1,
-                "cats": [
-                    {
-                        "catName": "Frosty",
-                        "physicalDescription": "Long hair, white and beige",
-                        "isWetFoodGiven": "true",
-                        "areSpecialNeedsAttended": "true"
-                    }
-                ],
-                "areCatsHealthy": "true",
-                "symptoms": "N/A",
-                "isCondoCleaned": "true",
-                "isLitterBoxCleaned": "true",
-                "isLitterBoxRefilled": "true",
-                "areBedsChanged": "true",
-                "isSweepingDone": "true",
-                "isDryFoodRefilled": "true",
-                "isWaterRefilled": "true",
-                "isCondoLocked": "true",
-                "comments": "N/A"
-            },
-            {
-                "condoNumber": 2,
-                "cats": [
-                    {
-                        "catName": "Luffy",
-                        "physicalDescription": "White",
-                        "isWetFoodGiven": "true",
-                        "areSpecialNeedsAttended": "true"
-                    },
-                    {
-                        "catName": "Nami",
-                        "physicalDescription": "Brown tabby",
-                        "isWetFoodGiven": "true",
-                        "areSpecialNeedsAttended": "true"
-                    }
-                ],
-                "areCatsHealthy": "true",
-                "symptoms": "N/A",
-                "isCondoCleaned": "true",
-                "isLitterBoxCleaned": "true",
-                "isLitterBoxRefilled": "true",
-                "areBedsChanged": "true",
-                "isSweepingDone": "true",
-                "isDryFoodRefilled": "true",
-                "isWaterRefilled": "true",
-                "isCondoLocked": "true",
-                "comments": "N/A"
-            }
-        ]
-    },
-    {
         "date": "2026-04-01",
         "volunteerName": "Diana",
         "careTasks": [
@@ -121,21 +9,27 @@
                     {
                         "catName": "Frosty",
                         "physicalDescription": "Long hair, white and beige",
-                        "isWetFoodGiven": "true",
-                        "areSpecialNeedsAttended": "true"
+                        "specialNeeds": "Add a spoon of probiotics powder to the dry food bowl"
                     }
                 ],
-                "areCatsHealthy": "true",
-                "symptoms": "N/A",
+                "areCatsHealthy": "Yes",
+                "symptoms": "",
                 "isCondoCleaned": "true",
                 "isLitterBoxCleaned": "true",
                 "isLitterBoxRefilled": "true",
                 "areBedsChanged": "true",
                 "isSweepingDone": "true",
+                "dryFood": "Iams",
+                "flavorDryFood": "Chicken",
                 "isDryFoodRefilled": "true",
+                "wetFood": "Iams",
+                "flavorWetFood": "Salmon",
+                "quantityWetFood": "A quarter of can",
+                "isWetFoodGiven": "true",
                 "isWaterRefilled": "true",
+                "areSpecialNeedsAttended": "true",
                 "isCondoLocked": "true",
-                "comments": "N/A"
+                "comments": "No comments"
             },
             {
                 "condoNumber": 2,
@@ -143,27 +37,166 @@
                     {
                         "catName": "Luffy",
                         "physicalDescription": "White",
-                        "isWetFoodGiven": "true",
-                        "areSpecialNeedsAttended": "true"
+                        "specialNeeds": "No special needs"
                     },
                     {
                         "catName": "Nami",
                         "physicalDescription": "Brown tabby",
-                        "isWetFoodGiven": "true",
-                        "areSpecialNeedsAttended": "true"
+                        "specialNeeds": "No special needs"
                     }
                 ],
-                "areCatsHealthy": "true",
-                "symptoms": "N/A",
+                "areCatsHealthy": "Yes",
+                "symptoms": "",
                 "isCondoCleaned": "true",
                 "isLitterBoxCleaned": "true",
                 "isLitterBoxRefilled": "true",
                 "areBedsChanged": "true",
                 "isSweepingDone": "true",
+                "dryFood": "Intuition",
+                "flavorDryFood": "Chicken",
                 "isDryFoodRefilled": "true",
+                "wetFood": "N/A",
+                "flavorWetFood": "N/A",
+                "quantityWetFood": "N/A",
+                "isWetFoodGiven": "true",
                 "isWaterRefilled": "true",
+                "areSpecialNeedsAttended": "true",
                 "isCondoLocked": "true",
-                "comments": "N/A"
+                "comments": "No comments"
+            }
+        ]
+    },
+    {
+        "date": "2026-04-02",
+        "volunteerName": "Josee",
+        "careTasks": [
+            {
+                "condoNumber": 1,
+                "cats": [
+                    {
+                        "catName": "Frosty",
+                        "physicalDescription": "Long hair, white and beige",
+                        "specialNeeds": "Add a spoon of probiotics powder to the dry food bowl"
+                    }
+                ],
+                "areCatsHealthy": "Yes",
+                "symptoms": "",
+                "isCondoCleaned": "true",
+                "isLitterBoxCleaned": "true",
+                "isLitterBoxRefilled": "true",
+                "areBedsChanged": "true",
+                "isSweepingDone": "true",
+                "dryFood": "Iams",
+                "flavorDryFood": "Chicken",
+                "isDryFoodRefilled": "true",
+                "wetFood": "Iams",
+                "flavorWetFood": "Salmon",
+                "quantityWetFood": "A quarter of can",
+                "isWetFoodGiven": "true",
+                "isWaterRefilled": "true",
+                "areSpecialNeedsAttended": "true",
+                "isCondoLocked": "true",
+                "comments": "No comments"
+            },
+            {
+                "condoNumber": 2,
+                "cats": [
+                    {
+                        "catName": "Luffy",
+                        "physicalDescription": "White",
+                        "specialNeeds": "No special needs"
+                    },
+                    {
+                        "catName": "Nami",
+                        "physicalDescription": "Brown tabby",
+                        "specialNeeds": "No special needs"
+                    }
+                ],
+                "areCatsHealthy": "Yes",
+                "symptoms": "",
+                "isCondoCleaned": "true",
+                "isLitterBoxCleaned": "true",
+                "isLitterBoxRefilled": "true",
+                "areBedsChanged": "true",
+                "isSweepingDone": "true",
+                "dryFood": "Intuition",
+                "flavorDryFood": "Chicken",
+                "isDryFoodRefilled": "true",
+                "wetFood": "N/A",
+                "flavorWetFood": "N/A",
+                "quantityWetFood": "N/A",
+                "isWetFoodGiven": "true",
+                "isWaterRefilled": "true",
+                "areSpecialNeedsAttended": "true",
+                "isCondoLocked": "true",
+                "comments": "No comments"
+            }
+        ]
+    },
+    {
+        "date": "2026-04-03",
+        "volunteerName": "Lisa",
+        "careTasks": [
+            {
+                "condoNumber": 1,
+                "cats": [
+                    {
+                        "catName": "Frosty",
+                        "physicalDescription": "Long hair, white and beige",
+                        "specialNeeds": "Add a spoon of probiotics powder to the dry food bowl"
+                    }
+                ],
+                "areCatsHealthy": "Yes",
+                "symptoms": "",
+                "isCondoCleaned": "true",
+                "isLitterBoxCleaned": "true",
+                "isLitterBoxRefilled": "true",
+                "areBedsChanged": "true",
+                "isSweepingDone": "true",
+                "dryFood": "Iams",
+                "flavorDryFood": "Chicken",
+                "isDryFoodRefilled": "true",
+                "wetFood": "Iams",
+                "flavorWetFood": "Salmon",
+                "quantityWetFood": "A quarter of can",
+                "isWetFoodGiven": "true",
+                "isWaterRefilled": "true",
+                "areSpecialNeedsAttended": "true",
+                "isCondoLocked": "true",
+                "comments": "No comments"
+            },
+            {
+                "condoNumber": 2,
+                "cats": [
+                    {
+                        "catName": "Luffy",
+                        "physicalDescription": "White",
+                        "specialNeeds": "No special needs"
+                    },
+                    {
+                        "catName": "Nami",
+                        "physicalDescription": "Brown tabby",
+                        "specialNeeds": "No special needs"
+                    }
+                ],
+                "areCatsHealthy": "Yes",
+                "symptoms": "",
+                "isCondoCleaned": "true",
+                "isLitterBoxCleaned": "true",
+                "isLitterBoxRefilled": "true",
+                "areBedsChanged": "true",
+                "isSweepingDone": "true",
+                "dryFood": "Intuition",
+                "flavorDryFood": "Chicken",
+                "isDryFoodRefilled": "true",
+                "wetFood": "N/A",
+                "flavorWetFood": "N/A",
+                "quantityWetFood": "N/A",
+                "isWetFoodGiven": "true",
+                "isWaterRefilled": "true",
+                "areSpecialNeedsAttended": "true",
+                "isCondoLocked": "true",
+                "comments": "No comments"
             }
         ]
     }

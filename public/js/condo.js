@@ -1,4 +1,4 @@
-import { deleteCatInfo } from "./actions.js";
+import { deleteCatInfo } from "./catActions.js";
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -87,7 +87,7 @@ function createCatCard(cat) {
     const entryDate = document.createElement("p");
     entryDate.classList.add("entry-date");
     entryDate.innerHTML = `<strong>Entry Date: </strong>
-    <span>${new Date(cat.entryDate).toLocaleDateString(undefined, {year: 'numeric', month: '2-digit', day: '2-digit'})}</span>`;
+    <span>${new Date(cat.entryDate).toLocaleDateString(undefined, {timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit'})}</span>`;
 
     rescueData.appendChild(entryDate);
 
@@ -148,7 +148,7 @@ function createCatCard(cat) {
     const editButton = document.createElement("button");
     editButton.classList.add("edit-button");
     editButton.textContent = "Edit";
-    editButton.innerHTML = `<a href="../add-edit.html?catName=${cat.catName}">Edit</a>`;
+    editButton.innerHTML = `<a href="../add-edit-cat.html?catName=${cat.catName}">Edit</a>`;
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-button");

@@ -1,4 +1,4 @@
-import { addCatInfo, changeCatInfo } from "./actions.js";
+import { addCatInfo, changeCatInfo } from "./catActions.js";
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -6,8 +6,8 @@ const catName = urlParams.get("catName");
 
 async function addOrEditCatInfo() {
     const currentUrl = new URL(window.location.href);
-    const urlForAdding = new URL("http://localhost:8080/add-edit.html");
-    const urlForEditing = new URL(`http://localhost:8080/add-edit.html?catName=${catName}`);
+    const urlForAdding = new URL("http://localhost:8080/add-edit-cat.html");
+    const urlForEditing = new URL(`http://localhost:8080/add-edit-cat.html?catName=${catName}`);
 
     if (currentUrl.href === urlForAdding.href) {
         await addCatInfo();

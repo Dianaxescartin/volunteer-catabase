@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Catabase - Checklist Section</title>
+    <link rel="stylesheet" href="./css/checklistInfo.css">
+</head>
+<body>
+    <header>
+        <div>
+            <img id="logo" src="./images/cat-you-logo.JPG" alt="Cat you logo">
+        </div>
+        <div>
+            <h1>Volunteer Catabase</h1>
+            <h2>Cat You Rescue Inc</h2>
+        </div>
+    </header>
+    <nav>
+        <button id="home-button"><a href="./index.html">Home</a></button>
+        <button id="add-checklist-button"><a href="./add-edit-checklist.html">Add Checklist</a></button>
+    </nav>
+    <aside id="find-checklist">
+            <p>Find a checklist (please select a date)</p>
+            <div id="find-checklist-date">
+                <label for="checklist-date">Date: </label>
+                <input type="date" id="checklist-date" name="checklist-date" required>
+            </div>
+            <button id="find-checklist-button">Find Checklist</button>
+    </aside>
+
+    <main id="hidden">
+            
+            <!-- <article id="checklist-header">
+                <p id="date"><strong>Date: </strong><span>04/01/2026</span></p>
+                <p id="volunteer-name"><strong>Volunteer Name: </strong><span>Diana</span></p>
+            </article> -->
+
+            <!-- <article class="checklist-card">
+                <details id="condo 1">
+                    <summary>Condo 1</summary>
+
+                    <fieldset>
+                        <legend><h2>Daily Checklist</h2></legend>
+        
+                        <section class="condo-1-cat-info">
+                            <fieldset class="checklist-cat-info">
+                                <legend class="condo-1"><h4>Condo 1</h4></legend>
+                                <p class="cat-name"><strong>Cat Name: </strong><span>Frosty</span></p>
+                                <p class="physical-description"><strong>Physical Description: </strong><span>Long hair, white and beige</span></p>
+                            </fieldset>
+                        </section>
+                
+                        <section class="checklist-health">
+                            <p class="are-cats-healthy"><strong>Do the kitties look healthy? </strong><span>Yes/No</span></p>
+                            <p class="symptoms"><strong>Symptoms: </strong><span>Cat name and symptoms</span></p>
+                        </section>
+                
+                        <section class="general-care-details">
+                            <p><em>Remember to take out all the bowls before you start to clean.</em></p>
+                
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="condo-cleaned-1" name="condo-cleaned" checked disabled>
+                                    <label for="condo-cleaned-1">Clean condo surfaces</label>
+                                </li>
+                
+                                <li>
+                                    <input type="checkbox" id="litter-box-cleaned-1" name="litter-box-cleaned" checked disabled>
+                                    <label for="litter-box-cleaned-1">Clean litter box</label>
+                                </li>
+                
+                                <li>
+                                    <input type="checkbox" id="litter-box-refilled-1" name="litter-box-refilled" checked disabled>
+                                    <label for="litter-box-refilled-1">Refill litter box (if necessary)</label>                    
+                                </li>
+                
+                                <li>
+                                    <input type="checkbox" id="beds-changed-1" name="beds-changed" checked disabled>
+                                    <label for="beds-changed-1">Change beds (if they are dirty)</label>
+                                </li>
+                
+                                <li>
+                                    <input type="checkbox" id="sweeping-done-1" name="sweeping-done" checked disabled>
+                                    <label for="sweeping-done-1">Sweep around and under condo</label>
+                                </li>
+                            </ul>
+                        </section>
+                
+                        <section class="specific-care-details">
+                            <p><em>Now, put in the bowls inside the condo using the following instructions:</em></p>
+                
+                            <ul class="food-water-needs">
+                                <div>
+                                    <fieldset class="checklist-cat-info">
+                                        <legend><h4>Dry Food</h4></legend>
+                                        <p><strong>Brand: </strong>Iams <br>
+                                            <strong>Flavor: </strong>Chicken</p>
+                                    </fieldset>
+            
+                                    <li>
+                                        <input type="checkbox" id="dry-food-refilled-1" name="dry-food-refilled" checked disabled>
+                                        <label for="dry-food-refilled-1">Refill 1/2 dry food bowl</label>
+                                    </li>                            
+                                </div>
+    
+                                <div>
+                                    <fieldset class="checklist-cat-info">
+                                        <legend><h4>Wet Food</h4></legend>
+                                        <p><strong>Brand: </strong>Iams <br>
+                                            <strong>Flavor: </strong>Salmon <br>
+                                            <strong>Quantity: </strong>A quarter of can</p>
+                                    </fieldset>
+                                    
+                                    <li>
+                                        <input type="checkbox" id="wet-food-given-1" name="wet-food-given" checked disabled>
+                                        <label for="wet-food-given-1">Give wet food</label>
+                                    </li>
+                                </div>
+    
+                                <div>
+                                    <li>                   
+                                        <input type="checkbox" id="water-refilled-1" name="water-refilled" checked disabled>
+                                        <label for="water-refilled-1">Change water bowl</label>
+                                    </li>
+                                </div>
+
+                                <div>
+                                    <fieldset class="checklist-cat-info">
+                                        <legend><h4>Special Needs</h4></legend>
+                                            <p><strong>Frosty: </strong>Add a spoon of probiotics powder to the dry food bowl</p>
+                                    </fieldset>
+                    
+                                    <li>
+                                        <input type="checkbox" id="special-needs-attended-1" name="special-needs-attended" checked disabled>
+                                        <label for="special-needs-attended-1">Attend special needs</label>
+                                    </li>
+                                </div>
+                            </ul>
+                            
+                        </section>
+                
+                        <section class="checklist-end">
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="condo-locked-1" name="condo-locked" checked disabled>
+                                    <label for="condo-locked-1">Lock the condo</label>
+                                </li>
+                            </ul>
+
+                            <p class="comments"><strong>Comments: </strong>Any comments here</p>
+                        </section>
+    
+                    </fieldset>
+                </details>
+            </article> -->
+
+            <div class="buttons-container">
+                <button class="edit-button">Edit</button>
+                <button class="delete-button">Delete</button>
+            </div>
+
+    </main>
+
+    <script src="./js/checklistInfo.js" type="module"></script>
+</body>
+</html>
