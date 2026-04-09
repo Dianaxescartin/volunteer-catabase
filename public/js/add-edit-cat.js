@@ -1,4 +1,4 @@
-import { addCatInfo, changeCatInfo } from "./catActions.js";
+import { addCatInfo, editCatInfo } from "./catActions.js";
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -12,13 +12,14 @@ async function addOrEditCatInfo() {
     if (currentUrl.href === urlForAdding.href) {
         await addCatInfo();
     } else if (currentUrl.href === urlForEditing.href) {
-        await editCatInfo();
+        await renderCardToEditCatInfo();
+        await editCatInfo(catName);
     }
 }
 
 addOrEditCatInfo();
 
-async function editCatInfo() {
+async function renderCardToEditCatInfo() {
     const urlParams = new URLSearchParams(window.location.search);
     const catName = urlParams.get("catName");
 
@@ -116,12 +117,10 @@ async function editCatInfo() {
     catch (error) {
         console.error(error.message);
     }
-
-    await changeCatInfo(catName);
 }
 
-function capitalizeLetter(input) {
-    const inputToCapitalize = document.getElementById(input);
+function capitalizeLetter(inputId) {
+    const inputToCapitalize = document.getElementById(inputId);
 
     inputToCapitalize.addEventListener("input", () => {
         if (inputToCapitalize.value.includes("months") || inputToCapitalize.value.includes("years") ||

@@ -18,7 +18,7 @@ function createCatCard(cat) {
     const catCard = document.createElement("article");
     catCard.classList.add("cat-card");
 
-    const catInfo = document.createElement("div");
+    const catInfo = document.createElement("section");
     catInfo.classList.add("cat-info");
     const catInfoTitle = document.createElement("h3");
     catInfoTitle.classList.add("hidden-title");
@@ -67,7 +67,7 @@ function createCatCard(cat) {
 
     catInfo.appendChild(personality);
 
-    const rescueData = document.createElement("div");
+    const rescueData = document.createElement("section");
     rescueData.classList.add("rescue-data");
     const rescueDataTitle = document.createElement("h3");
     rescueDataTitle.classList.add("hidden-title");
@@ -95,7 +95,7 @@ function createCatCard(cat) {
 
     rescueData.appendChild(daysInStore);
 
-    const careDetails = document.createElement("div");
+    const careDetails = document.createElement("section");
     careDetails.classList.add("care-details");
     const careDetailsTitle = document.createElement("h3");
     careDetailsTitle.classList.add("hidden-title");
@@ -140,7 +140,7 @@ function createCatCard(cat) {
 
     careDetails.appendChild(specialNeeds);
 
-    const buttonsContainer = document.createElement("div");
+    const buttonsContainer = document.createElement("section");
     buttonsContainer.classList.add("buttons-container");
 
     const editButton = document.createElement("button");
@@ -171,9 +171,16 @@ function createCatCard(cat) {
 async function renderCatsCards() {
     try {
         const catInfo = await getCatInfo();
-        catInfo.forEach((cat) =>
-            createCatCard(cat)
-        );
+        if (catInfo === "No cats found") {
+            const catsContainer = document.getElementById("cats-container");
+            const noCatsMessage = document.createElement("h2");
+            noCatsMessage.innerHTML = "No cats at the store right now.<br>Please check back later!";
+            catsContainer.appendChild(noCatsMessage);
+        } else {
+            catInfo.forEach((cat) =>
+                createCatCard(cat)
+            );
+        }
     }
     catch (error) {
         console.error(error.message);

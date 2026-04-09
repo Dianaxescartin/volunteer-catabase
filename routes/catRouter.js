@@ -26,16 +26,16 @@ catRouter.get("/", async (request, response) => {
 
 catRouter.get("/condo/:condoNumber", async (request, response) => {
     const condoNumber = request.params.condoNumber;
-    const catsInCondo = await getCatsByCondo(condoNumber);
+    const catsByCondo = await getCatsByCondo(condoNumber);
 
-    if (!catsInCondo || catsInCondo.length === 0) {
+    if (!catsByCondo || catsByCondo.length === 0) {
         return response.status(404).json({
             data: `No cats found in condo number ${condoNumber}`,
         });
     }
     
     response.status(200).json({
-        data: catsInCondo,
+        data: catsByCondo,
     });
 });
 

@@ -22,7 +22,6 @@ export async function addChecklistInfo() {
         const parsedData = await response.json();
         catsInfo = parsedData.data;
         condoNumbersUnique = [...new Set(catsInfo.map(cat => cat.condoNumber))];
-
     }
     catch (error) {
         console.error(error.message);
@@ -35,8 +34,6 @@ export async function addChecklistInfo() {
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
         const data = new FormData(form);
-
-        console.log("Form data collected:")
     
         newEntry = {
             date: data.get("date"),
@@ -70,15 +67,13 @@ export async function addChecklistInfo() {
         });
 
         newEntry.careTasks.forEach(task => {
-            const catsInCondo = catsInfo.filter(cat => cat.condoNumber === task.condoNumber);
-            task.cats = catsInCondo.map(cat => ({
+            const catsByCondo = catsInfo.filter(cat => cat.condoNumber === task.condoNumber);
+            task.cats = catsByCondo.map(cat => ({
                 catName: cat.catName,
                 physicalDescription: cat.physicalDescription,
                 specialNeeds: cat.specialNeeds
             }));
         });
-
-        console.log(newEntry);
 
         try {
             const postRequest = await fetch("http://localhost:8080/api/checklists", {
@@ -101,7 +96,7 @@ export async function addChecklistInfo() {
     });
 }
 
-export async function changeChecklistInfo(date) {
+export async function editChecklistInfo(date) {
 
     let updatedEntry;
 
@@ -162,7 +157,5 @@ export async function changeChecklistInfo(date) {
         catch (error) {
             console.error(error.message);
         }
-
-
     });
 }

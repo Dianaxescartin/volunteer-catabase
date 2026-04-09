@@ -22,7 +22,7 @@ function createCatCard(cat) {
     const catCard = document.createElement("article");
     catCard.classList.add("cat-card");
 
-    const catInfo = document.createElement("div");
+    const catInfo = document.createElement("section");
     catInfo.classList.add("cat-info");
     const catInfoTitle = document.createElement("h3");
     catInfoTitle.classList.add("hidden-title");
@@ -69,7 +69,7 @@ function createCatCard(cat) {
 
     catInfo.appendChild(personality);
 
-    const rescueData = document.createElement("div");
+    const rescueData = document.createElement("section");
     rescueData.classList.add("rescue-data");
     const rescueDataTitle = document.createElement("h3");
     rescueDataTitle.classList.add("hidden-title");
@@ -97,7 +97,7 @@ function createCatCard(cat) {
 
     rescueData.appendChild(daysInStore);
 
-    const careDetails = document.createElement("div");
+    const careDetails = document.createElement("section");
     careDetails.classList.add("care-details");
     const careDetailsTitle = document.createElement("h3");
     careDetailsTitle.classList.add("hidden-title");
@@ -142,7 +142,7 @@ function createCatCard(cat) {
 
     careDetails.appendChild(specialNeeds);
     
-    const buttonsContainer = document.createElement("div");
+    const buttonsContainer = document.createElement("section");
     buttonsContainer.classList.add("buttons-container");
 
     const editButton = document.createElement("button");

@@ -62,9 +62,16 @@ function createCatCard(cat) {
 async function renderCatsCards() {
     try {
         const catInfo = await getCatInfo();
-        catInfo.forEach((cat) =>
-            createCatCard(cat)
-        );
+        if (catInfo === "No cats found") {
+            const catsContainer = document.getElementById("cats-container");
+            const noCatsMessage = document.createElement("h2");
+            noCatsMessage.innerHTML = "No cats at the store right now.<br>Please check back later!";
+            catsContainer.appendChild(noCatsMessage);
+        } else {
+            catInfo.forEach((cat) =>
+                createCatCard(cat)
+            );
+        }
     }
     catch (error) {
         console.error(error.message);

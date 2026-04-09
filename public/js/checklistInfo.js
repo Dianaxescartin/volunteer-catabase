@@ -40,11 +40,15 @@ function showHiddenChecklist() {
 async function getChecklistInfoByDate(date) {
     try {
         const response = await fetch(`http://localhost:8080/api/checklists/${date}`);
+        if (!response.ok) {
+            return null;
+        }
         const parsedData = await response.json();
         const checklistInfo = parsedData.data[0];
 
         return checklistInfo;
-    } catch (error) {
+    }
+    catch (error) {
     console.error(error.message);
     }
 }
@@ -109,10 +113,11 @@ function createChecklistCard(checklistInfo) {
         const HealthSection = document.createElement("section");
         HealthSection.classList.add(`checklist-health`);
         const areCatsHealthy = checklistInfo.careTasks.find(task => task.condoNumber === condoNumber).areCatsHealthy;
-        HealthSection.innerHTML = `<p><strong>Do the kitties look healthy? </strong><span>${areCatsHealthy}</span></p>`;
+        HealthSection.innerHTML = `<p id="cats-healthy-${condoNumber}"><strong>Do the kitties look healthy? </strong><span>${areCatsHealthy}</span></p>`;
         if (areCatsHealthy === "No") {
             const symptoms = checklistInfo.careTasks.find(task => task.condoNumber === condoNumber).symptoms;
             const symptomsParagraph = document.createElement("p");
+            symptomsParagraph.id = `symptoms-${condoNumber}`;
             symptomsParagraph.innerHTML = `<strong>Symptoms: </strong><span>${symptoms}</span>`;
             HealthSection.appendChild(symptomsParagraph);
         }
@@ -120,7 +125,7 @@ function createChecklistCard(checklistInfo) {
 
         const generalCareSection = document.createElement("section");
         generalCareSection.classList.add(`general-care-details`);
-        generalCareSection.innerHTML = `<p><em>Remember to take out all the bowls before you start to clean.</em></p>`
+        generalCareSection.innerHTML = `<p><em>Remember to take out all the bowls before you start to clean.</em></p>`;
         const ulGeneralCare = document.createElement("ul");
         const generalCareTasks = checklistInfo.careTasks.find(task => task.condoNumber === condoNumber);
 
@@ -207,13 +212,15 @@ function createChecklistCard(checklistInfo) {
         endSection.classList.add(`checklist-end`);
         const ulEndSection = document.createElement("ul");
         const lastTask = checklistInfo.careTasks.find(task => task.condoNumber === condoNumber);
-        endSection.appendChild(ulEndSection);
-
+        
         const isCondoLocked = lastTask.isCondoLocked === "true" ? "checked" : "";
         ulEndSection.innerHTML +=
-            `<li><input type="checkbox" id="condo-locked-${condoNumber}" name="condo-locked-${condoNumber}" ${isCondoLocked} disabled>
-            <label for="condo-locked-${condoNumber}">Lock condo</label></li>`;
+        `<li><input type="checkbox" id="condo-locked-${condoNumber}" name="condo-locked-${condoNumber}" ${isCondoLocked} disabled>
+        <label for="condo-locked-${condoNumber}">Lock condo</label></li>`;
+        endSection.appendChild(ulEndSection);
+
         const comments = document.createElement("p");
+        comments.id = `comments-${condoNumber}`;
         comments.innerHTML = `<strong>Comments: </strong>${lastTask.comments}`;
         endSection.appendChild(comments);
 
@@ -230,7 +237,7 @@ function createChecklistCard(checklistInfo) {
 
     const deleteButton = document.querySelector(".delete-button");
     deleteButton.addEventListener("click", async (e) => {
-        if(window.confirm(`Are you sure you want to delete the checklist for ${new Date(checklistInfo.date).toLocaleDateString(undefined, {timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit'})}`)) {
+        if (window.confirm(`Are you sure you want to delete the checklist for ${new Date(checklistInfo.date).toLocaleDateString(undefined, {timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit'})}`)) {
             e.preventDefault();
             await deleteChecklistInfo(checklistInfo.date);
             alert(`The checklist for ${new Date(checklistInfo.date).toLocaleDateString(undefined, {timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit'})} has been deleted.`);
@@ -242,9 +249,18 @@ function createChecklistCard(checklistInfo) {
 async function renderChecklistCards(date) {
     try {
         const checklistInfo = await getChecklistInfoByDate(date);
-        createChecklistCard(checklistInfo);
+        if (checklistInfo) {
+            createChecklistCard(checklistInfo);
+        } else {
+            const checklistContainer = document.getElementById("checklist-container");
+            const noChecklistMessage = document.createElement("h2");
+            noChecklistMessage.innerHTML = "No checklist found for the selected date.<br>Please try another date!";
+            checklistContainer.appendChild(noChecklistMessage);
+            const buttonsContainer = document.querySelector(".buttons-container");
+            buttonsContainer.style.display = "none";
+        }
     }
     catch (error) {
-    console.error(error.message);
+        console.error(error.message);
     }
 }

@@ -65,16 +65,20 @@ export async function addCatInfo() {
                     "Content-Type": "application/json; charset=UTF-8",
                 },
             });
+            if (postRequest.status === 201) {
+                window.alert("Cat info added successfully!");
+                window.location.href = `../name.html?catName=${newEntry.catName}`;
+            } else if (postRequest.status === 400) {
+                window.alert(`Failed to add cat info: ${await postRequest.text()}`);
+            }
         }
         catch (error) {
             console.error(error.message);
-        }
-
-        window.location.href = `../name.html?catName=${newEntry.catName}`;
+        }        
     });
 }
 
-export async function changeCatInfo(catName) {
+export async function editCatInfo(catName) {
     const form = document.querySelector("form");
     form.method = "PUT";
     form.action = `/api/cats/${catName}`;
@@ -129,11 +133,15 @@ export async function changeCatInfo(catName) {
                     "Content-Type": "application/json; charset=UTF-8",
                 },
             });
+            if (putRequest.status === 200) {
+                window.alert("Cat info updated successfully!");
+                window.location.href = `../name.html?catName=${updatedEntry.catName}`;
+            } else if (putRequest.status === 400) {
+                window.alert(`Failed to update cat info: ${await putRequest.text()}`);
+            }   
         }
         catch (error) {
             console.error(error.message);
         }
-
-        window.location.href = `../name.html?catName=${updatedEntry.catName}`;
     });
 }

@@ -31,13 +31,13 @@ export async function getCatsByCondo(condoNumber) {
     try {
         const catInfo = await jsonReadCatInfo();
         const condo = parseInt(condoNumber);
-        const catsInCondo = catInfo.filter((cat) => cat.condoNumber === condo);
+        const catsByCondo = catInfo.filter((cat) => cat.condoNumber === condo);
         
-        catsInCondo.forEach((cat) => {
+        catsByCondo.forEach((cat) => {
             cat.daysInStore = calculateDaysInStore(cat.entryDate);
         });
 
-        return catsInCondo;
+        return catsByCondo;
     } catch (error) {
         console.error("Error getting cats by condo:", error);
     }
@@ -82,9 +82,9 @@ export async function createCat(requestBody) {
             specialNeeds: requestBody.specialNeeds || "No special needs"
         };
 
-            if (!newCat.condoNumber || !newCat.catName || !newCat.gender || !newCat.age || !newCat.physicalDescription 
-                || !newCat.adoptionFee || !newCat.entryDate || !newCat.dryFood || !newCat.flavorDryFood || !newCat.wetFood 
-                || !newCat.flavorWetFood || !newCat.quantityWetFood) {
+        if (!newCat.condoNumber || !newCat.catName || !newCat.gender || !newCat.age || !newCat.physicalDescription 
+            || !newCat.adoptionFee || !newCat.entryDate || !newCat.dryFood || !newCat.flavorDryFood || !newCat.wetFood 
+            || !newCat.flavorWetFood || !newCat.quantityWetFood) {
             return undefined;
         }
 

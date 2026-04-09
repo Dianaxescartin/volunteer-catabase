@@ -27,8 +27,8 @@ export async function jsonWriteCatInfo(catInfo) {
     }
 }
 
-// Setting up path to checklist.json file for JSON controller functions
-const checklistPath = path.join(__dirname, "../data/checklist.json");
+// Setting up path to checklistInfo.json file for JSON controller functions
+const checklistPath = path.join(__dirname, "../data/checklistInfo.json");
 
 // JSON checklist controller functions
 export async function jsonReadChecklist() {
@@ -37,7 +37,7 @@ export async function jsonReadChecklist() {
 
         return JSON.parse(checklist);
     } catch (error) {
-        console.error("Error reading checklist from JSON file:", error);
+        console.error("Error reading checklist info from JSON file:", error);
     }
 }
 
@@ -45,6 +45,6 @@ export async function jsonWriteChecklist(checklist) {
     try {
         await fs.writeFile(checklistPath, JSON.stringify(checklist, null, 4));
     } catch (error) {
-        console.error("Error writing checklist to JSON file:", error);
+        console.error("Error writing checklist info to JSON file:", error);
     }
 }

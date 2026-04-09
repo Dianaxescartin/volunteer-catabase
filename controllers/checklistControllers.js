@@ -19,12 +19,11 @@ export async function getAllChecklists() {
 export async function getChecklistByDate(date) {
     try {
         const checklists = await jsonReadChecklist();
-        const dateFormatted = new Date(date).toISOString().split('T')[0];
-        const checklistByDate = checklists.filter(item => item.date === dateFormatted);
+        const checklistByDate = checklists.filter(item => item.date === date);
         
         return checklistByDate;
     } catch (error) {
-        console.error("Error getting checklist by date:", error);
+        console.error(`Error getting checklist by date: ${date}, error: ${error}`);
     }
 }
 
@@ -92,8 +91,7 @@ export async function createChecklist(requestBody) {
 export async function updateChecklist(date, requestBody) {
     try {
         const checklists = await jsonReadChecklist();
-        const dateFormatted = new Date(date).toISOString().split('T')[0];
-        const checklistToUpdate = checklists.find((item) => item.date === dateFormatted);
+        const checklistToUpdate = checklists.find((item) => item.date === date);
 
         if (!checklistToUpdate) {
             return undefined;
@@ -151,8 +149,7 @@ export async function updateChecklist(date, requestBody) {
 export async function deleteChecklist(date) {
     try {
         const checklists = await jsonReadChecklist();
-        const dateFormatted = new Date(date).toISOString().split('T')[0];
-        const checklistToDelete = checklists.find((item) => item.date === dateFormatted);
+        const checklistToDelete = checklists.find((item) => item.date === date);
 
         if (!checklistToDelete) {
             return undefined;
