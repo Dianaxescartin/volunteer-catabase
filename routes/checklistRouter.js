@@ -54,7 +54,7 @@ checklistRouter.post("/", async (request, response) => {
     }
 
     if (newChecklist === "invalid date") {
-        return response.status(400).json({
+        return response.status(409).json({
             data: `Bad Request. A checklist for this date: ${request.body.date} already exists`,
         });
     }
@@ -82,7 +82,7 @@ checklistRouter.put("/:date", async (request, response) => {
     }
 
     if (updatedChecklist === "invalid date") {
-        return response.status(400).json({
+        return response.status(409).json({
             data: `Bad Request. A checklist for this date: ${request.body.date} already exists`,
         });
     }

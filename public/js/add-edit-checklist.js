@@ -223,7 +223,6 @@ async function getChecklistInfoToEdit() {
         const parsedData = await response.json();
         const checklistInfo = parsedData.data[0];
 
-        console.log(checklistInfo);
         renderChecklistCardToEdit(checklistInfo);
 
         capitalizeLetter("volunteer-name");

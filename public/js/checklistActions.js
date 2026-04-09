@@ -86,8 +86,8 @@ export async function addChecklistInfo() {
             if (postRequest.status === 201) {
                 window.alert("Checklist info added successfully!");
                 window.location.href = `../checklistInfo.html`;
-            } else if (postRequest.status === 400) {
-                window.alert(`Failed to add checklist info: ${await postRequest.text()}`);
+            } else if (postRequest.status === 409) {
+                window.alert(`Failed to add checklist info, this date: ${newEntry.date} already exists. Please choose another date.`);
             }
         }
         catch (error) {
@@ -150,8 +150,8 @@ export async function editChecklistInfo(date) {
             if (putRequest.status === 200) {
                 window.alert("Checklist info updated successfully!");
                 window.location.href = `../checklistInfo.html`;
-            } else if (putRequest.status === 400) {
-                window.alert(`Failed to update checklist info: ${await putRequest.text()}`);
+            } else if (putRequest.status === 409) {
+                window.alert(`Failed to update checklist info, this date: ${updatedEntry.date} already exists. Please choose another date.`);
             }            
         }
         catch (error) {
