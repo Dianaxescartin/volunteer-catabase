@@ -4,12 +4,12 @@ import { jsonReadCatInfo, jsonWriteCatInfo } from '../data/jsonService.js';
 moment().format("YYYY-MM-DD");
 
 // Using moment library to calculate days in store
-function calculateDaysInStore(entryDate) {
+export function calculateDaysInStore(entryDate) {
     const currentDate = moment();
     const entryDateCat = moment(entryDate).format("YYYY-MM-DD");
     const daysInStore = currentDate.diff(entryDateCat, 'days');
     return daysInStore;
-} 
+}
 
 // Cat controller functions
 export async function getAllCats() {

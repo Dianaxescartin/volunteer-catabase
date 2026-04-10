@@ -10,7 +10,9 @@ Once the project was cloned, you need to install:
 
 - Node.js
 - Dependencies: Express.js and Moment.js
-- Dev Dependencies: nodemon
+- Dev Dependencies: nodemon and jest
+
+For Jest it was needed to add the next script "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js" to package.json, to make sure it works with Modules ES6.
 
 These are the tools and technologies used:
 
@@ -19,6 +21,7 @@ These are the tools and technologies used:
 - JavaScript
 - JSON files for persisted data
 - API to submit and retrieve data
+- Unit testing using Jest
 
 # Usage
 
